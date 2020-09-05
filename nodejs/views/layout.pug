@@ -1,0 +1,30 @@
+doctype html
+html
+    head
+        title Hands-on Assignment
+        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css', integrity='sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z', crossorigin='anonymous')
+        style.
+            body main#main section div.jumbotron.text-center {
+                margin-bottom: 0px
+            }
+            footer.text-muted {
+                margin: 10px
+            }
+    body
+        main#main
+            section
+                .jumbotron.text-center
+                    .container
+                        h1.jumbotron-heading Hello Alibaba Cloud
+                        p.lead.text-muted Server IP address: #{ip_server}
+            
+            .album.py-5.bg-light
+                .container.text-center
+                    .row
+                        img(src='https://com-muhammadarifwicaksana-alibabademo.oss-ap-southeast-5.aliyuncs.com/logo.png', alt='Alibaba Cloud logo', class='img-fluid')
+                    h2 Last access:
+                    for log in logs
+                        p From #{log.source_ip} at #{log.time}
+
+        footer.text-muted
+            p &#169; Muhammad Arif Wicaksana 2020
