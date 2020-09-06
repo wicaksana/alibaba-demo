@@ -7,6 +7,12 @@ html
             body main#main section div.jumbotron.text-center {
                 margin-bottom: 0px
             }
+            img.img-fluid {
+                margin-bottom: 30px
+            }
+            p.log {
+                margin-bottom: 0
+            }
             footer.text-muted {
                 margin: 10px
             }
@@ -16,7 +22,7 @@ html
                 .jumbotron.text-center
                     .container
                         h1.jumbotron-heading Hello Alibaba Cloud
-                        p.lead.text-muted Server IP address: #{ip_server}
+                        p.lead.text-muted Server: #{server_hostname}
             
             .album.py-5.bg-light
                 .container.text-center
@@ -24,7 +30,7 @@ html
                         img(src='https://com-muhammadarifwicaksana-alibabademo.oss-ap-southeast-5.aliyuncs.com/logo.png', alt='Alibaba Cloud logo', class='img-fluid')
                     h2 Last access:
                     for log in logs
-                        p From #{log.source_ip} at #{log.time}
+                        p.log From #{log.source_ip} at #{log.time}
 
         footer.text-muted
             p &#169; Muhammad Arif Wicaksana 2020

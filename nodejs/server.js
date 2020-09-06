@@ -10,17 +10,18 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 MongoClient.connect('mongodb://localhost:27017/access_log', { useUnifiedTopology: true })
+//MongoClient.connect('mongodb://root:{PASSWORD}@dds-d9j2eb419aa740941.mongodb.ap-southeast-5.rds.aliyuncs.com:3717,dds-d9j2eb419aa740942.mongodb.ap-southeast-5.rds.aliyuncs.com:3717/admin?replicaSet=mgset-1100638461', { useUnifiedTopology: true })
     .then(client => {
         const db = client.db('access-log');
         const access = db.collection('access');
 
         app.get('/', function (request, response) {
-            access.insertOne({source_ip: request.connection.remoteAddress, time: new Date().toLocaleString("en", {timeZoneName: "short", timeZone: 'Asia/Jakarta'})})
+            access.insertOne({source_ip: request.headers['x-forwarded-for'], time: new Date().toLocaleString("en", {timeZoneName: "short", timeZone: 'Asia/Jakarta'})})
                 .then(res => console.log(res.ops))
                 .catch(err => console.log(err));
 
             db.collection('access').find().sort({_id:-1}).limit(10).toArray()
-                .then(res => response.render('layout', { 'ip_server': request.connection.localAddress, 'logs': res }))
+                .then(res => response.render('layout', { 'server_hostname': os.hostname(), 'logs': res }))
                 .catch(err => console.log(err));
         })
             
