@@ -10,7 +10,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 //MongoClient.connect('mongodb://localhost:27017/access_log', { useUnifiedTopology: true })
-MongoClient.connect('mongodb://root:{PASSWORD}@dds-d9j2eb419aa740941.mongodb.ap-southeast-5.rds.aliyuncs.com:3717,dds-d9j2eb419aa740942.mongodb.ap-southeast-5.rds.aliyuncs.com:3717/admin?replicaSet=mgset-1100638461', { useUnifiedTopology: true })
+MongoClient.connect('mongodb://root:{PASSWORD}@dds-d9jaa51b4469ff841.mongodb.ap-southeast-5.rds.aliyuncs.com:3717,dds-d9jaa51b4469ff842.mongodb.ap-southeast-5.rds.aliyuncs.com:3717/admin?replicaSet=mgset-1100638995', { useUnifiedTopology: true })
     .then(client => {
         const db = client.db('access-log');
         const access = db.collection('access');
